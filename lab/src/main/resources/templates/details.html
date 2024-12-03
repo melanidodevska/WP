@@ -1,0 +1,77 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e59232f0a1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold">Event Details</h1>
+            <p class="lead text-muted">Explore the details of your selected event</p>
+        </div>
+    </section>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 th:text="${event.name}" class="mb-0 font-weight-bold"></h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong>Description:</strong>
+                                <span th:text="${event.description}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Rating:</strong>
+                                <span th:text="${event.popularityScore}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Location:</strong>
+                                <span th:text="${event.getLocation().getName()}"></span>,
+                                <span th:text="${event.getLocation().getAddress()}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Capacity:</strong>
+                                <span th:text="${event.getLocation().getCapacity()}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Category:</strong>
+                                <span th:text="${event.getCategory().getCategory()}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <!--                        <form th:action="@{'/events/like/{id}' (id=${event.getId()})}" method="POST" class="d-inline">-->
+                        <!--                            <button th:disabled="${event.isClicked()}"-->
+                        <!--                                    type="submit"-->
+                        <!--                                    class="btn btn-primary btn-sm">-->
+                        <!--                                <i class="fas fa-thumbs-up"></i> Like-->
+                        <!--                            </button>-->
+                        <!--                        </form>-->
+                        <a href="/events" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
